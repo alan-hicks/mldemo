@@ -2,9 +2,11 @@
 mldemo
 ******
 
-Multilingual demo website with Python's Django and Mezzanine
+Multilingual demo website using Python's Django and Mezzanine
 
 Multilingual websites - I know my a-做
+
+`Website <http://p-o.co.uk/tech-articles/howto-multilingual-website-with-pythons-django-and-mezzanine/>`_
 
 Summary
 =======
