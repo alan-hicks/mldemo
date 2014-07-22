@@ -1,0 +1,15 @@
+{% load mezzanine_tags %}
+
+{% if not flatblock.login_required or flatblock.login_required and user.is_authenticated %}
+<div>
+    <div class="panel panel-default">
+        {% if flatblock.title and flatblock.show_title %}
+        <div class="panel-heading">
+            <h2 class="panel-title">{{ flatblock.title }}</h2>
+        </div>
+        {% endif %}
+        <div class="panel-body">{{ flatblock.content|richtext_filters|safe }}
+        </div>
+    </div>
+</div>
+{% endif %}

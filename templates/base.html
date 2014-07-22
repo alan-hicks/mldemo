@@ -1,0 +1,122 @@
+{% load staticfiles i18n block_tags %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+<head>
+    <title>{% block meta_title %}{% endblock %}{% if site_title %} | {{ site_title }}{% endif %}</title>
+    <meta name="DC.title" content="{% block dc_title %}{{ site_title }}{% endblock %}" >
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="Design" content="Persistent Objects — http://www.p-o.co.uk">
+    <meta name="DC.creator" content="Persistent Objects Ltd — http://www.p-o.co.uk" >
+    <meta name="DC.publisher" content="Persistent Objects Ltd — http://www.p-o.co.uk" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='{% static "css/style.css" %}' rel="stylesheet">
+    <link href='{% static "images/favicon.ico" %}' rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="{% static 'css/mldemo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mezzanine.css' %}">
+    {% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" href="{% static 'css/rtl.css' %}">
+    {% endif %}
+    <style type='text/css'>
+        #header {
+            background-color: #ffffff;
+            border-bottom-width: 0.5px;
+        }
+        #content-container {
+            padding-top: 1em;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+{% for hreflang_href, hreflang_slug, hreflang_code in hreflang_list %}{% if hreflang_slug == '/' %}
+    <link rel="alternate" hreflang="{{ hreflang_code }}" href="http://{{ hreflang_href }}{{ hreflang_slug }}" />
+{% else %}
+    <link rel="alternate" hreflang="{{ hreflang_code }}" href="http://{{ hreflang_href }}/{{ hreflang_slug }}" />
+{% endif %}{% endfor %}
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <div id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ML Demo</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class='row'>
+                {% block menu %}
+                <!-- First template: perhaps base.html, or an include file -->
+                {% load pages_tags %}
+                {% page_menu "pages/menus/dropdown.html" %}
+                {% endblock %}
+                <form id='frmLanguage' action="{% url 'set_language' %}" method="post">
+                <div class='input-group input-group-sm' style='padding-top: 7px; width: 250px;'>
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{% if page.mlpage.pagetype %}{% url 'redirect_pagetype' page.mlpage.pagetype %}{% else %}{% url 'redirect_pagetype' 'home' %}{% endif %}" />
+                    {% for language, language_name in languages %}
+                    <button type="submit" name="language" value="{{ language }}"
+                    class="btn btn-sm btn-default" style="border-width:0;"
+                    title="{{ language_name }}" >
+                    <img src='{% static "img/" %}{{ language }}-125.png' alt="{{ language_name }}" style='width:25px;'>
+                    </button>
+                    {% endfor %}
+                </div>
+                </form>
+
+                </div>
+            </div><!--/.nav-collapse -->
+        </div>
+        <div id="nav2" class="container">
+            <div id="submenu" class="col-md-12">{% block submenu %}{% spaceless %}
+                {% load pages_tags %}
+                {% page_menu "pages/menus/submenu.html" %}
+            {% endspaceless %}{% endblock %}</div>
+        </div>
+    </div>
+
+    <div id="messages">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+            <a class="close" data-dismiss="alert">×</a>
+            {{message}}
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div id="content-container" class="container">
+        {% block main %}
+        <div id="content" class="col-md-9">
+            <div class="page-header">
+                <h1>Welcome</h1>
+            </div>
+        </div>
+        {% endblock %}
+        {% block sidebar %}
+        <div class="col-md-3" style="font-size: 0.9em;">
+        {% richflatblock "contact" %}
+        </div>
+        {% endblock %}
+    </div><!-- /container -->
+    <div id="footer">
+      <div class="container text-muted">
+        {% richflatblock "footer" using "mezzanine_blocks/plain.html" %}
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/jquery-1.10.2.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap-extras.js' %}" type="text/javascript"></script>
+    {% block extra_js %}{% endblock %}
+{% block footer_scripts %}{% endblock %}
+</body>
+</html>

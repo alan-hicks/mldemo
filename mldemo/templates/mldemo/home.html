@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load mezzanine_tags keyword_tags block_tags bsbanners_tags %}
+{% load i18n %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{{ page.title }}
+{% endblock %}
+
+{% block main %}
+
+<div id="content" class="col-md-12">
+{% bsbanner "home-banner" %}
+    <div id='mlcontentblock' class="row">
+    {% for fp_page in fp_pages %}
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            {% if fp_page.title %}
+            <div class="panel-heading">
+                <h2 class="panel-title"><a href="{{ fp_page.get_absolute_url }}">
+                {% with pagetype=fp_page.mlpage.pagetype %}
+                {% if pagetype.glyphicon %}
+                <span class="glyphicon glyphicon-{{ pagetype.glyphicon }}"></span>
+                {% endif %}
+                {% endwith %}
+                {{ fp_page.title }}
+                </a></h2>
+            </div>
+            {% endif %}
+            <div class="panel-body">{{ fp_page.description|safe }}
+            <div><a href="{{ fp_page.get_absolute_url }}">{% trans "Read more..." %}</a></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div>
+    {{ page.mlpage.content|safe }}
+    </div>
+
+    <div>
+    {% richflatblock "contact" %}
+    </div>
+</div>
+{% endblock %}
+
+{% block submenu %}
+<div id='mlmenublock' class="row">
+{% spaceless %}
+    {% load pages_tags %}
+    {% page_menu "pages/menus/submenu.html" %}
+{% endspaceless %}</div>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

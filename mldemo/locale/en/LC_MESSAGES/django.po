@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-22 18:58+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dashboard.py:37 dashboard.py:54 dashboard.py:85
+msgid "Administration"
+msgstr "Administration"
+
+#: dashboard.py:49
+msgid "All pages"
+msgstr "All pages"
+
+#: dashboard.py:67
+msgid "Media Management"
+msgstr "Media Management"
+
+#: dashboard.py:71
+msgid "FileBrowser"
+msgstr "FileBrowser"
+
+#: dashboard.py:80
+msgid "Configuration"
+msgstr "Configuration"
+
+#: dashboard.py:101
+msgid "Django: Administration"
+msgstr "Django: Administration"
+
+#: dashboard.py:109
+msgid "Recent Actions"
+msgstr "Recent Actions"
+
+#: settings.py:129
+msgid "English"
+msgstr ""
+
+#: settings.py:130
+msgid "French"
+msgstr ""
+
+#: settings.py:131
+msgid "Dutch"
+msgstr ""
+
+#: settings.py:132
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:133
+msgid "Simplified Chinese"
+msgstr ""
+
+#: templates/mldemo/home.html:48
+msgid "Read more..."
+msgstr "Read more..."
