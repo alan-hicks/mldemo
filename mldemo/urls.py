@@ -16,8 +16,6 @@ from django.contrib import admin
 from mldemo import views
 from filebrowser.sites import site
 
-admin.autodiscover()
-
 urlpatterns = patterns('',
     # redirect/home
     url('^redirect/(?P<typeofpage>.*)$', views.redirect_pagetype,
