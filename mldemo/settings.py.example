@@ -2,10 +2,10 @@
 Django settings for mldemo project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
+https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
+https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 #pylint: disable=line-too-long
 
@@ -20,7 +20,7 @@ SITE_ID = 1
 SITE_TITLE = 'Multilingual demo'
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ndihl*~4d$#aknzugpaln49jwmhenopdaqlddmh^rcolwgapwe'
@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'mldemo.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -125,7 +125,7 @@ DATABASES = {
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
 # Default language
 #LANGUAGE_CODE = 'en'
 # Available languages
@@ -164,7 +164,7 @@ USE_TZ = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_ROOT = u'static/'
 STATIC_URL = u'/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, u'media')
