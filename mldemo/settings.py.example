@@ -70,7 +70,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.comments',
+    'django_comments',
     'django.contrib.flatpages',
     'django.contrib.redirects',
     'django.contrib.sessions',
