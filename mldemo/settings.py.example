@@ -77,7 +77,6 @@ INSTALLED_APPS = (
     "mezzanine.core",
     "mezzanine.generic",
     "mezzanine.pages",
-    'mezzanine_blocks',
     'mezzanine_bsbanners',
 )
 
