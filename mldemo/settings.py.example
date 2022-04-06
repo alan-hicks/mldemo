@@ -1,3 +1,8 @@
+#----------------------------------------------------------------------
+# Copyright (c) 2014-2019, Persistent Objects Ltd https://p-o.co.uk/
+#
+# License: BSD
+#----------------------------------------------------------------------
 """
 Django settings for mldemo project.
 
