@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Mlpage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='pages.Page')),
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='pages.Page', on_delete=models.CASCADE)),
                 ('content', mezzanine.core.fields.RichTextField(verbose_name='Content')),
             ],
             options={
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='mlpage',
             name='pagetype',
-            field=models.ForeignKey(blank=True, to='mldemo.Pagetype', null=True),
+            field=models.ForeignKey(blank=True, to='mldemo.Pagetype', null=True, on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.CreateModel(

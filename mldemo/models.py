@@ -1,5 +1,5 @@
 #----------------------------------------------------------------------
-# Copyright (c) 2014-2016, Persistent Objects Ltd http://p-o.co.uk/
+# Copyright (c) 2014-2022, Persistent Objects Ltd https://p-o.co.uk/
 #
 # License: BSD
 #----------------------------------------------------------------------
@@ -219,6 +219,7 @@ class Pagetype(models.Model):
         ('tree-conifer', 'glyphicon-tree-conifer'),
         ('tree-deciduous', 'glyphicon-tree-deciduous'),
     )
+    id = models.AutoField(primary_key=True)
     title = models.CharField('Title', max_length=50)
     glyphicon = models.CharField('Icon', max_length=35, choices=GLYPHICON_CHOICES)
     description = models.CharField('Description', max_length=50)
@@ -240,7 +241,7 @@ class Mlpage(Page, RichText):
     Subclass of Mezzanine page adding page type
     """
     #pylint: disable=too-many-ancestors,too-many-public-methods
-    pagetype = models.ForeignKey(Pagetype, blank=True, null=True)
+    pagetype = models.ForeignKey(Pagetype, on_delete=models.CASCADE, blank=True, null=True)
 
 class Typestatus(models.Model):
     """
